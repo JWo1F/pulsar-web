@@ -4,13 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08090d" />
-    <title>Pulsar — Logic Analyzer</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY64PDTH58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WY64PDTH58');
+    </script>
+
+    <!-- SEO -->
+    <title>Pulsar — Browser-Based Logic Analyzer for Cypress EZ-USB FX2LP</title>
+    <meta name="description" content="Pulsar is a free, open-source browser-based 8-channel logic analyzer for Cypress EZ-USB FX2LP. Capture digital signals at up to 24 MHz, decode UART, SPI, 1-Wire, and DHT11 protocols, and analyze waveforms — no drivers or installation required. Works in Chrome, Edge, and Chromium browsers via WebUSB." />
+    <meta name="keywords" content="logic analyzer, WebUSB, Cypress FX2LP, EZ-USB, digital signal analysis, protocol decoder, UART decoder, SPI decoder, 1-Wire, DHT11, waveform viewer, browser logic analyzer, open source, sigrok, fx2lafw, embedded debugging, hardware debugging" />
+    <meta name="author" content="Pulsar Contributors" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://pulsar.ivashkin.dev/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pulsar — Browser-Based Logic Analyzer" />
+    <meta property="og:description" content="Free, open-source 8-channel logic analyzer in the browser. Connect a Cypress EZ-USB FX2LP via WebUSB, capture up to 24 MHz, decode UART/SPI/1-Wire/DHT11 protocols, and analyze waveforms instantly." />
+    <meta property="og:url" content="https://pulsar.ivashkin.dev/" />
+    <meta property="og:site_name" content="Pulsar Logic Analyzer" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Pulsar — Browser-Based Logic Analyzer" />
+    <meta name="twitter:description" content="Free 8-channel logic analyzer in the browser via WebUSB. Capture up to 24 MHz, decode UART/SPI/1-Wire/DHT11, analyze waveforms. No install required." />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pulsar",
+      "alternateName": "Pulsar Logic Analyzer",
+      "description": "Browser-based 8-channel logic analyzer for Cypress EZ-USB FX2LP. Captures digital signals at rates from 100 kHz to 24 MHz with protocol decoding for UART, SPI, 1-Wire, and DHT11. Uses WebUSB — no drivers or installation required.",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Logic Analyzer",
+      "operatingSystem": "Web (Chrome, Edge, Chromium)",
+      "url": "https://pulsar.ivashkin.dev/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "8-channel digital signal capture",
+        "Sample rates from 100 kHz to 24 MHz",
+        "WebUSB — no drivers or software installation",
+        "Protocol decoders: UART, SPI, 1-Wire, DHT11",
+        "Interactive waveform viewer with pan, zoom, and measurement cursors",
+        "Automatic firmware upload via FX2LP bootloader",
+        "Save and load captures in Sigrok .sr format",
+        "Drag-and-drop channel and decoder reordering",
+        "Crop and export signal selections"
+      ],
+      "softwareRequirements": "Chromium-based browser with WebUSB support (Chrome, Edge)",
+      "isAccessibleForFree": true,
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-F-IRQZ6r.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CjpH51LH.css">
+    <script type="module" crossorigin src="/assets/index-DHGPb4BX.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DX13Ws2f.css">
   </head>
   <body>
     <div id="app">
@@ -139,6 +203,34 @@
         <div id="waveform-container" class="waveform-container"></div>
         <div id="waveform-log"></div>
       </section>
+    </div>
+
+    <!-- Machine-readable content for search engines and AI systems -->
+    <div class="sr-only" aria-hidden="true">
+      <h2>What is Pulsar?</h2>
+      <p>Pulsar is a free, open-source, browser-based logic analyzer designed for the Cypress EZ-USB FX2LP (fx2lafw). It enables hardware engineers, embedded developers, and hobbyists to capture and analyze digital signals directly in a web browser using WebUSB — with zero installation, no native drivers, and no proprietary software.</p>
+
+      <h2>Supported Hardware</h2>
+      <p>Pulsar works with Cypress EZ-USB FX2LP-based logic analyzers, including popular clones compatible with Sigrok's fx2lafw firmware (USB VID:PID 04B4:8613, 04B4:0053, 1D50:608C). These affordable USB logic analyzers are widely available and provide 8 digital channels with configurable sample rates from 100 kHz to 24 MHz.</p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>WebUSB connectivity: works in Chrome, Edge, and all Chromium-based browsers without drivers</li>
+        <li>8-channel digital signal capture at sample rates from 100 kHz to 24 MHz</li>
+        <li>Automatic firmware upload to the FX2LP via its USB bootloader</li>
+        <li>Interactive waveform viewer with smooth pan, zoom, fit-to-screen, and time measurement cursors</li>
+        <li>Built-in protocol decoders: UART (serial), SPI (Serial Peripheral Interface), 1-Wire, and DHT11 temperature/humidity sensor</li>
+        <li>Drag-and-drop channel and decoder row reordering</li>
+        <li>Signal selection, cropping, and export</li>
+        <li>Full compatibility with Sigrok .sr capture files for import and export</li>
+        <li>Runs entirely in the browser — your data never leaves your machine</li>
+      </ul>
+
+      <h2>Use Cases</h2>
+      <p>Pulsar is ideal for debugging embedded systems, reverse-engineering serial protocols, verifying SPI and UART communication, analyzing sensor data lines (DHT11, 1-Wire devices), teaching digital electronics, and quick signal checks without launching a full desktop application. It is a lightweight alternative to PulseView and other Sigrok frontends.</p>
+
+      <h2>Technology</h2>
+      <p>Built with vanilla JavaScript (ES modules), Web Workers for background computation, Canvas API for high-performance waveform rendering, and Vite for bundling. No frameworks, no runtime dependencies.</p>
     </div>
 
   </body>
