@@ -72,88 +72,96 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-B9RxnAxu.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DX13Ws2f.css">
+    <script type="module" crossorigin src="/assets/index-qMTgHXPB.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bjc6-ETI.css">
   </head>
   <body>
     <div id="app">
-      <header class="app-header">
-        <svg class="logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0.5" y="0.5" width="35" height="35" rx="8" fill="#0a0e18" stroke="rgba(0,212,255,0.15)"/>
-          <path d="M6 24V12h8v12h8V12h8v12" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div>
-          <h1>Pulsar</h1>
-          <p class="subtitle">Logic Analyzer &middot; Cypress EZ-USB FX2LP</p>
-        </div>
-      </header>
-
-      <!-- status bar -->
-      <div id="status" class="status disconnected">Disconnected</div>
-
-      <!-- connect or load -->
-      <section id="start-section" class="setup-section">
-        <div class="section-head">
-          <h2>Get Started</h2>
-        </div>
-        <div class="btn-row">
-          <button id="btn-connect">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Connect Device
-          </button>
-          <button id="btn-load-capture">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13h10M8 3v7m0 0l-3-3m3 3l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Open File
-          </button>
-          <input type="file" id="load-capture-file" accept=".sr" hidden />
-        </div>
-        <div id="fw-version"></div>
-        <!-- firmware upload (shown when device needs it) -->
-        <div id="firmware-panel" hidden>
-          <p>Device needs firmware before use.</p>
-          <div class="btn-row">
-            <button id="btn-upload-bundled">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0l-3-3m3 3l3-3M3 12v1.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Upload firmware
-            </button>
-          </div>
-          <details>
-            <summary>Or select a custom firmware file</summary>
-            <div class="details-body">
-              <input type="file" id="fw-file" accept=".fw,.ihx,.hex,.bin" />
-              <button id="btn-upload-fw" disabled>Upload custom</button>
+      <div id="home-modal">
+        <div class="home-modal-card">
+          <header class="app-header">
+            <svg class="logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.5" y="0.5" width="35" height="35" rx="8" fill="#0a0e18" stroke="rgba(0,212,255,0.15)"/>
+              <path d="M6 24V12h8v12h8V12h8v12" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <h1>Pulsar</h1>
+              <p class="subtitle">Logic Analyzer &middot; Cypress EZ-USB FX2LP</p>
             </div>
-          </details>
-          <progress id="fw-progress" value="0" max="100" hidden></progress>
-        </div>
-      </section>
+          </header>
 
-      <!-- log -->
-      <section class="setup-section log-section">
-        <div class="section-head">
-          <h2>Log</h2>
-        </div>
-        <pre id="log"></pre>
-      </section>
+          <!-- status bar -->
+          <div id="status" class="status disconnected">Disconnected</div>
 
-      <!-- about -->
-      <section class="setup-section about-section">
-        <div class="section-head">
-          <h2>About</h2>
+          <!-- connect or load -->
+          <section id="start-section" class="setup-section">
+            <div class="section-head">
+              <h2>Get Started</h2>
+            </div>
+            <div class="btn-row">
+              <button id="btn-connect">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Connect Device
+              </button>
+              <button id="btn-demo-capture">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 8h11M9.5 5.5L12 8l-2.5 2.5M4 4.5h3M4 11.5h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Demo
+              </button>
+              <button id="btn-load-capture">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13h10M8 3v7m0 0l-3-3m3 3l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Open .sr (PulseView/Pulsar)
+              </button>
+              <input type="file" id="load-capture-file" accept=".sr" hidden />
+            </div>
+            <div id="fw-version"></div>
+            <!-- firmware upload (shown when device needs it) -->
+            <div id="firmware-panel" hidden>
+              <p>Device needs firmware before use.</p>
+              <div class="btn-row">
+                <button id="btn-upload-bundled">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0l-3-3m3 3l3-3M3 12v1.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Upload firmware
+                </button>
+              </div>
+              <details>
+                <summary>Or select a custom firmware file</summary>
+                <div class="details-body">
+                  <input type="file" id="fw-file" accept=".fw,.ihx,.hex,.bin" />
+                  <button id="btn-upload-fw" disabled>Upload custom</button>
+                </div>
+              </details>
+              <progress id="fw-progress" value="0" max="100" hidden></progress>
+            </div>
+          </section>
+
+          <!-- log -->
+          <section class="setup-section log-section">
+            <div class="section-head">
+              <h2>Log</h2>
+            </div>
+            <pre id="log"></pre>
+          </section>
+
+          <!-- about -->
+          <section class="setup-section about-section">
+            <div class="section-head">
+              <h2>About</h2>
+            </div>
+            <div class="about-body">
+              <p>Pulsar is a browser-based logic analyzer for the Cypress EZ-USB FX2LP. Connect your device over USB, capture up to 8 digital channels at rates from 100 kHz to 24 MHz, and analyze signals in real time — no drivers or software installation required.</p>
+              <ul>
+                <li>WebUSB — works directly in Chrome, Edge, and Chromium-based browsers</li>
+                <li>Automatic firmware upload via the FX2LP bootloader</li>
+                <li>Interactive waveform viewer with pan, zoom, fit-to-screen, and measurement cursors</li>
+                <li>Protocol decoders: UART, SPI, 1-Wire, DHT11</li>
+                <li>Drag-and-drop channel and decoder reordering</li>
+                <li>Crop and export selections</li>
+                <li>Save and load captures in Sigrok .sr format</li>
+              </ul>
+            </div>
+          </section>
         </div>
-        <div class="about-body">
-          <p>Pulsar is a browser-based logic analyzer for the Cypress EZ-USB FX2LP. Connect your device over USB, capture up to 8 digital channels at rates from 100 kHz to 24 MHz, and analyze signals in real time — no drivers or software installation required.</p>
-          <ul>
-            <li>WebUSB — works directly in Chrome, Edge, and Chromium-based browsers</li>
-            <li>Automatic firmware upload via the FX2LP bootloader</li>
-            <li>Interactive waveform viewer with pan, zoom, fit-to-screen, and measurement cursors</li>
-            <li>Protocol decoders: UART, SPI, 1-Wire, DHT11</li>
-            <li>Drag-and-drop channel and decoder reordering</li>
-            <li>Crop and export selections</li>
-            <li>Save and load captures in Sigrok .sr format</li>
-          </ul>
-        </div>
-      </section>
+      </div>
 
       <!-- waveform view (hidden until connected) -->
       <section id="waveform-section">
